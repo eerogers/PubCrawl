@@ -1,0 +1,47 @@
+<script>
+//$(document).ready(function() {
+   // var database = firebase.database()
+   // var queryURL = "https://crossorigin.me/https://maps.googleapis.com/maps/api/js?key=AIzaSyBnk_hMjaiRUR-5f-2KxejK61qmGBYo1uo&callback=initMap"
+    // key = AIzaSyBnk_hMjaiRUR-5f-2KxejK61qmGBYo1uo
+  //  $.ajax({
+  //      url: queryURL,
+  //      method: "GET"
+  //  }).then(function(response){
+  //      console.log(response)
+  //  })
+    function initMap() {
+      //  var uluru = {lat: -25.363, lng: 131.044};
+        var startLat = 33.68
+        var startLong = -117.82
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: new google.maps.LatLng(startLat, startLong)
+        });
+        var outsideData = [{lat: 33.77, long: -117.00
+        },
+        {lat: 33.628, long: -117.55
+        }]
+
+        for (var i = 0; i < outsideData.length; i++) {
+          var coords = outsideData[i]
+          console.log(outsideData[i])
+          var latLng = new google.maps.LatLng(coords.lat,coords.long);
+          //console.log(coords[1])
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          })
+        }
+      //  var marker = new google.maps.Marker({
+      //    position: uluru,
+      //    map: map
+      //  });
+
+    }
+     
+</script>
+<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnk_hMjaiRUR-5f-2KxejK61qmGBYo1uo&callback=initMap">
+</script>
+</script>
+</body>
+</html>
