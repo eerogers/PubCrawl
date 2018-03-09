@@ -59,12 +59,12 @@
         <div class="row">
           <div class="card" style="width: 100%" id="itineraryCard">
             <div class="card-body">
-              <h6 class="card-title">List</h6>
+              <h6 class="card-title">Suggestions</h6>
               <div id="list_section">
                   <ul></ul>
                       <form id="newItemForm">
                       <input type="text" id="itemField" placeholder="Item" />
-                      <input type="submit" id="add" value="add" />
+                      <input type="submit" id="add" value="Add" />
                   </form>
               </div>
             </div>
@@ -74,7 +74,7 @@
           <div class="card" style="width: 100%;" id="chatCard">
             <div class="card-body">
               <div class="chat-box"></div>
-              <input id="entry-chat" type="text"><button id="enter" type="submit">Enter</button>
+                <input id="entry-chat" type="text"><input type="submit" id="enter" value="Enter"/>
             </div>
           </div>
         </div>
@@ -146,10 +146,12 @@
 $(document).ready(function() { 
 var database = firebase.database()
 console.log(database)
-//chat function -->
 var chat = database.ref('/chat')
+var suggestions = database.ref('/suggestions')
 var user = ""
+var suggArray = []
 
+//Below is the chat function.
 $(document).on("click", "#enter", function(){
   chat.push({
       user: user,
@@ -157,11 +159,35 @@ $(document).on("click", "#enter", function(){
   })
 })
 
-  database.ref('chat').on('child_added', function(snap){
+database.ref('chat').on('child_added', function(snap){
         $(".chat-box").append("<br>" + snap.val().user + ": " + snap.val().message)
-    }, function (errorObject){
+}, function (errorObject){
         console.log("The read failed:" +errorObject)
-    })
+})
+
+//I've linked the suggestion/list box to firebase below.
+//This seems necessary to store the data somewhere and make sure all users can see it.
+//While it won't be possible to delete FROM firebase remotely, 
+//it should still be possible to delete created list items (I THINK).
+
+$(document).on("click", "#add", function(){
+  suggestions.push({
+    user: user,
+    suggestion: $("#itemField").val()
+  })
+})
+
+//The code below pushes the "suggestion" into an extant array of suggestion items (suggArray).
+//Creating an array seems like the way to go if we want users to be able to manipulate and delete items.
+//Probably will need to sync local arrays somewhere down the line as things are deleted...
+
+database.ref('suggestions').on('child_added', function(snap){
+    suggArray.push(snap.val().suggestion)
+    console.log(suggArray)
+}, function (errorObject){
+        console.log("The read failed:" +errorObject)
+})
+  
 
 })
 </script>
