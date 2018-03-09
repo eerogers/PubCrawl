@@ -1,5 +1,5 @@
 // JavaScript function that wraps everything
-
+//test test deleted?
 
 var map;
 function initMap() {
