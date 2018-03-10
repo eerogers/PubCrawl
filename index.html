@@ -61,12 +61,12 @@
         <div class="row">
           <div class="card" style="width: 100%" id="itineraryCard">
             <div class="card-body">
-              <h6 class="card-title">List</h6>
+              <h6 class="card-title">Suggestions</h6>
               <div id="list_section">
                   <ul></ul>
                       <form id="newItemForm">
                       <input type="text" id="itemField" placeholder="Item" />
-                      <input type="submit" id="add" value="add" />
+                      <input type="submit" id="add" value="Add" />
                   </form>
               </div>
             </div>
@@ -75,8 +75,8 @@
         <div class="row">
           <div class="card" style="width: 100%;" id="chatCard">
             <div class="card-body">
-              <h6 class="card-title">Chat</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="chat-box"></div>
+                <input id="entry-chat" type="text"><input type="submit" id="enter" value="Enter"/>
             </div>
           </div>
         </div>
@@ -122,22 +122,85 @@
 
 
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <!-- MomentJS -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <!-- Javacsript file -->
   <script type="text/javascript" src="assets/javascript/app.js"></script>
-  
-<!-- Google Places API -->
+=======
+  <!-- Google API -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74&libraries=places&callback=initMap" async defer>
 </script>
+  
+  <!--Below code maybe redundant, test
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74&callback=initMap" async
+    defer></script>
+  -->
+  
+  
+  <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+  <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCl09xlknVjb5CyhG8vHftZ0DhXQKQ2xxQ",
+        authDomain: "pubcrawlappl.firebaseapp.com",
+        databaseURL: "https://pubcrawlappl.firebaseio.com",
+        projectId: "pubcrawlappl",
+        storageBucket: "pubcrawlappl.appspot.com",
+        messagingSenderId: "711134769554"
+      };
+      firebase.initializeApp(config);
+</script>
+<script>
+$(document).ready(function() { 
+var database = firebase.database()
+console.log(database)
+var chat = database.ref('/chat')
+var suggestions = database.ref('/suggestions')
+var user = ""
+var suggArray = []
 
+//Below is the chat function.
+$(document).on("click", "#enter", function(){
+  chat.push({
+      user: user,
+      message: $("#entry-chat").val()
+  })
+})
 
+database.ref('chat').on('child_added', function(snap){
+        $(".chat-box").append("<br>" + snap.val().user + ": " + snap.val().message)
+}, function (errorObject){
+        console.log("The read failed:" +errorObject)
+})
 
+//I've linked the suggestion/list box to firebase below.
+//This seems necessary to store the data somewhere and make sure all users can see it.
+//While it won't be possible to delete FROM firebase remotely, 
+//it should still be possible to delete created list items (I THINK).
 
+$(document).on("click", "#add", function(){
+  suggestions.push({
+    user: user,
+    suggestion: $("#itemField").val()
+  })
+})
+
+//The code below pushes the "suggestion" into an extant array of suggestion items (suggArray).
+//Creating an array seems like the way to go if we want users to be able to manipulate and delete items.
+//Probably will need to sync local arrays somewhere down the line as things are deleted...
+
+database.ref('suggestions').on('child_added', function(snap){
+    suggArray.push(snap.val().suggestion)
+    console.log(suggArray)
+}, function (errorObject){
+        console.log("The read failed:" +errorObject)
+})
+  
+
+})
+</script>
 </body>
 
 </html>
