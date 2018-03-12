@@ -1,92 +1,160 @@
 // JavaScript function that wraps everything
-//test test deleted?
-var myMarkers = { lat: 33.684, lng: -117.82 }
 
-var map;
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        //options
-        center: { lat: 33.684, lng: -117.82 },
-        zoom: 12,
-    });
-    //markers
-    var marker = new google.maps.Marker({
-        map: map,
-        position: myMarkers,
-        title: "Tustin"
-    });
+
+
+// ICU coordinates as a starting point
+var startLat = 33.6490513251
+var startLong = -117.8434728082
+var newCenterLat = startLat
+var newCenterLong = startLong
+
+
+var searchInput
+var googlePlacesQueryURL
+var returnedBarArray = []
+
+
+var coord = {
+    lat: 0,
+    long: 0
 }
+var latLongCoord = []
 
 
+function initMap() {
 
-
-//fun tion to add dynamic entries for to do list
-$(function () {
-    var $list, $newItemForm;
-
-    $list = $('ul')
-    $newItemForm = $("#newItemForm")
-
-    $newItemForm.on("submit", function (event) {
-        event.preventDefault()
-
-        var text = $("#itemField").val()
-        $list.append('<li class="barsPicked">' + text + '</li>')
-        $('input:text').val('')
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        // center: new google.maps.LatLng(startLat, startLong)
+        center: new google.maps.LatLng(newCenterLat, newCenterLong)
     });
 
-    $list.on("click", ".barsPicked", function () {
-        $(this).remove()
-    })
-})
+    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    var labelIndex = 0
 
+    for (var i = 0; i < latLongCoord.length; i++) {
+        var coords = latLongCoord[i]
+        //      console.log(latLongCoord[i])
+        var latLng = new google.maps.LatLng(coords.lat, coords.long);
 
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            label: labels[labelIndex++ % labels.length]
+        })
+    }
+}
 
 $(document).ready(function () {
 
-    var googlePlacesQueryURL = "https://crossorigin.me/https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+Irvine&key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74"
-    var key = "AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74"
+    $("#submitSearch").on("click", function (event) {
+        event.preventDefault();
+        var returnedBarArray = []
+        searchInput = $("#searchLocation").val().trim()
 
-    var resultLat
-    var resultLng
-    var resultCityName
-    var searchParameter
+        googlePlacesQueryURL = "https://crossorigin.me/https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+" + searchInput + "&key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74"
+        var key = "AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74"
 
-    $.ajax({
-        url: googlePlacesQueryURL,
-        method: 'GET'
-    }).then(function (requestResult) {
-for(var i=0;i<requestResult.results.length;i++)
-{
-        // $("#googleResult").empty()
-        $("#googleResult").append(requestResult.results[i].name + "<br>")
-        $("#googleResult").append(requestResult.results[i].formatted_address + "<br>")
-        $("#googleResult").append("lat: " + requestResult.results[i].geometry.location.lat + "<br>")
-        $("#googleResult").append("lng: " + requestResult.results[i].geometry.location.lng + "<br><br>")
-}
-        // $("#googleResult").append(requestResult.results[1].name + "<br>")
-        // $("#googleResult").append(requestResult.results[1].formatted_address + "<br>")
-        // $("#googleResult").append("lat: " + requestResult.results[1].geometry.location.lat + "<br>")
-        // $("#googleResult").append("lng: " + requestResult.results[1].geometry.location.lng + "<br><br>")
+        var resultLat
+        var resultLng
+        var resultCityName
+        var searchParameter
+        var markerLabels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-        // $("#googleResult").append(requestResult.results[2].name + "<br>")
-        // $("#googleResult").append(requestResult.results[2].formatted_address + "<br>")
-        // $("#googleResult").append("lat: " + requestResult.results[2].geometry.location.lat + "<br>")
-        // $("#googleResult").append("lng: " + requestResult.results[2].geometry.location.lng + "<br><br>")
+        $.ajax({
+            url: googlePlacesQueryURL,
+
+            method: 'GET'
+        }).then(function (requestResult) {
+            latLongCoord = []
+
+            var X
+            var barObj
+
+            for (var i = 0; i < requestResult.results.length; i++) {
+
+                X = {
+                    lat: lat,
+                    long: long
+                }
+
+                barObj = {
+                    barName: '',
+                    barAddress: '',
+                    barLink: '',
+                    barLat: '',
+                    barLong: '',
+                    barIndex: 0
+                }
+
+                barObj.barName = requestResult.results[i].name
+                barObj.barAddress = requestResult.results[i].formatted_address
+                barObj.barLink = requestResult.results[i].photos[0].html_attributions[0]
+                barObj.barIndex = i
+                
+                var lat = requestResult.results[i].geometry.location.lat
+                var long = requestResult.results[i].geometry.location.lng
+
+                barObj.barLat = lat
+                barObj.barLong = long
+                console.log("barLat in .then = "+barObj.barLat)
+                console.log("barLong in .then = "+barObj.barLong)
+
+                
+
+                returnedBarArray.push(barObj)
+
+            }
+            newCenterLat = returnedBarArray[0].barLat
+            newCenterLong = returnedBarArray[0].barLong
+           
+            initMap()
+
+            console.log('returnedBay Array: ', returnedBarArray)
 
 
-        console.log('getResponse', requestResult.results[0].formatted_address)
+            $("#googleResult").empty()
+            for (var x = 0; x < returnedBarArray.length; x++) {
+                $("#googleResult").append("<span class='addMeToCrawl' dataIndex = " + returnedBarArray[x].barIndex + ">Add_Me_Icon_Here</span><br>" + returnedBarArray[x].barName+"<br>"+returnedBarArray[x].barLink + "<br>" + returnedBarArray[x].barAddress + "<br>" + returnedBarArray[x].barIndex + "<br><br>")
+            }
 
-    })
+            //Click event that transfers bar search results as a google map marker and to pub list
+            $(".addMeToCrawl").on("click", function () {
+                console.log("Hello, I'm index#" + $(this).attr("dataIndex"))
+                console.log("Hello, address is #" + returnedBarArray[$(this).attr("dataIndex")].barAddress)
+                var imABarAndAddMeToList = returnedBarArray[$(this).attr("dataIndex")].barName
+                console.log("Bar To Add: " + imABarAndAddMeToList)
+                $('ul').append("<li class='barsPicked' dataIndex = " + $(this).attr('dataIndex') + ">" + imABarAndAddMeToList + "</li>")
+                var lat = returnedBarArray[$(this).attr("dataIndex")].barLat
+                var long = returnedBarArray[$(this).attr("dataIndex")].barLong
+
+                var X = {
+                    lat: lat,
+                    long: long
+                }
+
+                latLongCoord.push(X)
+                initMap()
+
+
+
+                //click event that removes bars from the list
+                $(".barsPicked").on("click", function () {
+                    $(this).remove()
+                    console.log($(this).attr("dataIndex"))
+                    latLongCoord.splice($(this).attr("dataIndex"))
+                    initMap()
+                })
+
+            })// end transfer bar to google map marker click event
+
+        })// end ajax then
+    })// end search click event
+});// close document.ready
 
 
 
 
-
-
-
-
-});  //close document.ready
 
 
 

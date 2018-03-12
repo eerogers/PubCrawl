@@ -128,15 +128,12 @@
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <!-- Javacsript file -->
   <script type="text/javascript" src="assets/javascript/app.js"></script>
-=======
+
   <!-- Google API -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74&libraries=places&callback=initMap" async defer>
 </script>
   
-  <!--Below code maybe redundant, test
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74&callback=initMap" async
-    defer></script>
-  -->
+  
   
   
   <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
@@ -155,7 +152,7 @@
 <script>
 $(document).ready(function() { 
 var database = firebase.database()
-console.log(database)
+//console.log(database)
 var chat = database.ref('/chat')
 var suggestions = database.ref('/suggestions')
 var user = ""
@@ -180,7 +177,7 @@ database.ref('chat').on('child_added', function(snap){
 //While it won't be possible to delete FROM firebase remotely, 
 //it should still be possible to delete created list items (I THINK).
 
-$(document).on("click", "#add", function(){
+$(document).on("click", "#addMeToCrawl", function(){
   suggestions.push({
     user: user,
     suggestion: $("#itemField").val()
@@ -193,9 +190,9 @@ $(document).on("click", "#add", function(){
 
 database.ref('suggestions').on('child_added', function(snap){
     suggArray.push(snap.val().suggestion)
-    console.log(suggArray)
+    //console.log(suggArray)
 }, function (errorObject){
-        console.log("The read failed:" +errorObject)
+        //console.log("The read failed:" +errorObject)
 })
   
 
