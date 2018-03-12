@@ -1,10 +1,14 @@
 // JavaScript function that wraps everything
-//test test deleted?
 
+
+
+// ICU coordinates as a starting point
 var startLat = 33.6490513251
 var startLong = -117.8434728082
 var newCenterLat = startLat
 var newCenterLong = startLong
+
+
 var searchInput
 var googlePlacesQueryURL
 var returnedBarArray = []
@@ -14,12 +18,8 @@ var coord = {
     lat: 0,
     long: 0
 }
-var latLongCoord = [{
-    lat: 0, long: 0
-},
-{
-    lat: 0, long: 0
-}]
+var latLongCoord = []
+
 
 function initMap() {
 
@@ -49,9 +49,8 @@ $(document).ready(function () {
 
     $("#submitSearch").on("click", function (event) {
         event.preventDefault();
+        var returnedBarArray = []
         searchInput = $("#searchLocation").val().trim()
-        console.log(searchInput)
-
 
         googlePlacesQueryURL = "https://crossorigin.me/https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+" + searchInput + "&key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74"
         var key = "AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74"
@@ -91,49 +90,69 @@ $(document).ready(function () {
                 barObj.barName = requestResult.results[i].name
                 barObj.barAddress = requestResult.results[i].formatted_address
                 barObj.barLink = requestResult.results[i].photos[0].html_attributions[0]
-
                 barObj.barIndex = i
-
+                
                 var lat = requestResult.results[i].geometry.location.lat
                 var long = requestResult.results[i].geometry.location.lng
 
                 barObj.barLat = lat
                 barObj.barLong = long
+                console.log("barLat in .then = "+barObj.barLat)
+                console.log("barLong in .then = "+barObj.barLong)
 
-                latLongCoord.push(X)
+                
+
                 returnedBarArray.push(barObj)
 
             }
             newCenterLat = returnedBarArray[0].barLat
             newCenterLong = returnedBarArray[0].barLong
+           
             initMap()
 
             console.log('returnedBay Array: ', returnedBarArray)
-            $("#googleResult").html("")
+
+
+            $("#googleResult").empty()
             for (var x = 0; x < returnedBarArray.length; x++) {
-                $("#googleResult").append("<span class='addMeToCrawl' dataIndex = " + returnedBarArray[x].barIndex + ">"+markerLabels[x]+"</span><br><br>" + returnedBarArray[x].barLink + "<br>" + returnedBarArray[x].barAddress + "<br>" + returnedBarArray[x].barIndex + "<br>" + returnedBarArray[x].barLat + "<br>" + returnedBarArray[x].barLong + "<br><br>")
+                $("#googleResult").append("<span class='addMeToCrawl' dataIndex = " + returnedBarArray[x].barIndex + ">Add_Me_Icon_Here</span><br>" + returnedBarArray[x].barName+"<br>"+returnedBarArray[x].barLink + "<br>" + returnedBarArray[x].barAddress + "<br>" + returnedBarArray[x].barIndex + "<br><br>")
             }
 
-            //Click event that transfers bar search results as a google map marker
+            //Click event that transfers bar search results as a google map marker and to pub list
             $(".addMeToCrawl").on("click", function () {
                 console.log("Hello, I'm index#" + $(this).attr("dataIndex"))
                 console.log("Hello, address is #" + returnedBarArray[$(this).attr("dataIndex")].barAddress)
                 var imABarAndAddMeToList = returnedBarArray[$(this).attr("dataIndex")].barName
                 console.log("Bar To Add: " + imABarAndAddMeToList)
-                $('ul').append('<li class="barsPicked">' + imABarAndAddMeToList + '</li>')
-               
-               //click event that removes bars from the list
+                $('ul').append("<li class='barsPicked' dataIndex = " + $(this).attr('dataIndex') + ">" + imABarAndAddMeToList + "</li>")
+                var lat = returnedBarArray[$(this).attr("dataIndex")].barLat
+                var long = returnedBarArray[$(this).attr("dataIndex")].barLong
+
+                var X = {
+                    lat: lat,
+                    long: long
+                }
+
+                latLongCoord.push(X)
+                initMap()
+
+
+
+                //click event that removes bars from the list
                 $(".barsPicked").on("click", function () {
                     $(this).remove()
+                    console.log($(this).attr("dataIndex"))
+                    latLongCoord.splice($(this).attr("dataIndex"))
+                    initMap()
                 })
-                
+
             })// end transfer bar to google map marker click event
-            
+
         })// end ajax then
     })// end search click event
 });// close document.ready
 
-   
+
 
 
 
