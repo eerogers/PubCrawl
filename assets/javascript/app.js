@@ -8,7 +8,7 @@ var newCenterLong = startLong
 var searchInput
 var googlePlacesQueryURL
 var returnedBarArray = []
-//var barObj = {}
+
 
 var coord = {
     lat: 0,
@@ -24,7 +24,7 @@ var latLongCoord = [{
 function initMap() {
 
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
+        zoom: 11,
         // center: new google.maps.LatLng(startLat, startLong)
         center: new google.maps.LatLng(newCenterLat, newCenterLong)
     });
@@ -45,40 +45,6 @@ function initMap() {
     }
 }
 
-//function to add dynamic entries for to do list
-$(function () {
-    var $list, $newItemForm;
-
-    $list = $('ul')
-    $newItemForm = $("#newItemForm")
-
-    $newItemForm.on("submit", function (event) {
-        event.preventDefault()
-
-        var text = $("#itemField").val()
-        $list.append('<li class="barsPicked">' + text + '</li>')
-        $('input:text').val('')
-    });
-
-    $list.on("click", ".barsPicked", function () {
-        $(this).remove()
-    })
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $(document).ready(function () {
 
     $("#submitSearch").on("click", function (event) {
@@ -94,6 +60,7 @@ $(document).ready(function () {
         var resultLng
         var resultCityName
         var searchParameter
+        var markerLabels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
         $.ajax({
             url: googlePlacesQueryURL,
@@ -101,7 +68,6 @@ $(document).ready(function () {
             method: 'GET'
         }).then(function (requestResult) {
             latLongCoord = []
-
 
             var X
             var barObj
@@ -138,53 +104,38 @@ $(document).ready(function () {
                 returnedBarArray.push(barObj)
 
             }
-            newCenterLat = lat
-            newCenterLong =long
+            newCenterLat = returnedBarArray[0].barLat
+            newCenterLong = returnedBarArray[0].barLong
             initMap()
 
             console.log('returnedBay Array: ', returnedBarArray)
             $("#googleResult").html("")
             for (var x = 0; x < returnedBarArray.length; x++) {
-                $("#googleResult").append("<span class='addMeToCrawl'>Add Me Icon </span><br><br>" + returnedBarArray[x].barLink + "<br>" + returnedBarArray[x].barAddress + "<br>" + returnedBarArray[x].barIndex + "<br>" + returnedBarArray[x].barLat + "<br>" + returnedBarArray[x].barLong + "<br><br>")
+                $("#googleResult").append("<span class='addMeToCrawl' dataIndex = " + returnedBarArray[x].barIndex + ">"+markerLabels[x]+"</span><br><br>" + returnedBarArray[x].barLink + "<br>" + returnedBarArray[x].barAddress + "<br>" + returnedBarArray[x].barIndex + "<br>" + returnedBarArray[x].barLat + "<br>" + returnedBarArray[x].barLong + "<br><br>")
             }
 
-
             //Click event that transfers bar search results as a google map marker
-        $(".addMeToCrawl").on("click", function () {
-            console.log("Hello, I'm index#" + $(this).barLong)
-
-        })// end transfer bar to google map marker click event
-        })
-
-        
-
-
+            $(".addMeToCrawl").on("click", function () {
+                console.log("Hello, I'm index#" + $(this).attr("dataIndex"))
+                console.log("Hello, address is #" + returnedBarArray[$(this).attr("dataIndex")].barAddress)
+                var imABarAndAddMeToList = returnedBarArray[$(this).attr("dataIndex")].barName
+                console.log("Bar To Add: " + imABarAndAddMeToList)
+                $('ul').append('<li class="barsPicked">' + imABarAndAddMeToList + '</li>')
+               
+               //click event that removes bars from the list
+                $(".barsPicked").on("click", function () {
+                    $(this).remove()
+                })
+                
+            })// end transfer bar to google map marker click event
+            
+        })// end ajax then
     })// end search click event
+});// close document.ready
+
+   
 
 
-
-
-
-    // var $list, $newItemForm;
-
-    // $list = $('ul')
-    // $newItemForm = $("#newItemForm")
-
-    // $newItemForm.on("submit", function (event) {
-    //     event.preventDefault()
-
-    //     var text = $("#itemField").val()
-    //     $list.append('<li class="barsPicked">' + text + '</li>')
-    //     $('input:text').val('')
-    // });
-
-    // $list.on("click", ".barsPicked", function () {
-    //     $(this).remove()
-    // })
-
-
-
-});  //close document.ready
 
 
 
