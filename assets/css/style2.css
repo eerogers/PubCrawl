@@ -108,22 +108,22 @@ p {
 .splash-one {
     position: relative;
     top: -55px;
-    visibility: hidden;
+    visibility: visible;
 }
 
 .splash-two {
     color: whitesmoke;
     position: relative;
-    top: -90px;
+    top: -120px;
     visibility: hidden;
 }
 
 .splash-three {
     color: whitesmoke;
     position: relative;
-    top: -200px;
+    top: -230px;
     margin: 40px 0px 0px 0px;
-    visibility: visible;
+    visibility: hidden;
 }
 
 .splash-about {
@@ -174,10 +174,10 @@ p {
         top: -160px;
     }
     .splash-two {
-        top: -200px;
+        top: -250px;
     }
     .splash-three {
-        top: -320px;
+        top: -400px;
     }
 }
 

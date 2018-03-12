@@ -51,10 +51,10 @@
         <div class="row splash-entry splash-one">
             <div class="col-md-3"></div>
             <div class="col-md-3">
-                <button class="splash-buttons">Create a Crawl</button>
+                <button class="splash-buttons create">Create a Crawl</button>
             </div>
             <div class="col-md-3">
-                <button class="splash-buttons">Join a Crawl</button>
+                <button class="splash-buttons join">Join a Crawl</button>
             </div>
             <div class="col-md-3"></div>
         </div>
@@ -104,8 +104,25 @@ firebase.initializeApp(config);
 <script>
 $(document).ready(function() {
 var database = firebase.database()
+var multiKeyArray = []
+var id = ""
 
-
+$(document).on("click", ".create", function(){
+    console.log("working")
+    $(".splash-one").attr("style", "visibility: hidden")
+    $(".splash-three").attr("style", "visibility: visible")
+})
+$(document).on("click", ".join", function(){
+    console.log("working")
+    $(".splash-one").attr("style", "visibility: hidden")
+    $(".splash-two").attr("style", "visibility: visible")
+    console.log(id)
+    console.log(multiKeyArray)
+})
+$(document).on("click", "#new-id", function(){
+    id = $("#crawl-id").val()
+    multiKeyArray.push(id)
+})
 })
 </script>
 </body>
