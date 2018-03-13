@@ -7,7 +7,7 @@ p {
     font-size: 18px;
     padding: 10px 15px 0px 15px;
     position: relative;
-    bottom: 85px;
+   /* bottom: 85px; */
     text-align: center;
     font-family: 'Quicksand', sans-serif;
     /*font-family: 'Nanum Myeongjo', serif;*/
@@ -35,7 +35,7 @@ p {
     float: right;
 }
 
-#about {
+.about {
     color: black;
     border-radius: 5px;
     font-size: 25px;
@@ -46,18 +46,6 @@ p {
 .search-crawl {
     margin: 8px 0px 0px 0px;
     font-size: 16px;
-}
-
-.footer {
-    background-color: rgb(35, 43, 43);
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    font-size: 25px;
-    font-family: 'Amatic SC', cursive;
-    color: gray;
-    text-align: center;
 }
 
 .prompt {
@@ -75,15 +63,24 @@ p {
     text-align: center;
     position: relative;
     top: 160px;
-    height: 350px;
+    height: 360px;
     border-radius: 5px;
     opacity: 0.8;
 }
 
 .about-section {
     position: relative;
-    bottom: 60px;
+    bottom: 210px;
 }
+
+.crawl-section {
+    position: relative;
+    bottom: 190px;
+    height: 250px;
+    overflow: auto; 
+    font-family: 'Amatic SC', cursive;
+}
+
 #title {
    /* font-family: 'Amatic SC', cursive; */
    /*  font-family: 'Berkshire Swash', cursive; */
@@ -97,6 +94,37 @@ p {
     bottom: 70px;
 }
 
+#title2 {
+    /* font-family: 'Amatic SC', cursive; */
+    /*  font-family: 'Berkshire Swash', cursive; */
+     font-family: 'Bowlby One SC', cursive; 
+    /* font-family: 'Shrikhand', cursive; */
+     font-size: 50px;
+     color: whitesmoke;
+     padding: 10px 0px 0px 0px;
+     text-align: center;
+     position: relative;
+     bottom: 180px;
+ }
+
+ #title3 {
+    /* font-family: 'Amatic SC', cursive; */
+    /*  font-family: 'Berkshire Swash', cursive; */
+    font-family: 'Bowlby One SC', cursive; 
+    /* font-family: 'Shrikhand', cursive; */
+     font-size: 50px;
+     color: whitesmoke;
+     padding: 10px 0px 0px 0px;
+     text-align: center;
+     position: relative;
+     bottom: 200px;
+ }
+
+#display-p-and-id {
+    position: relative;
+    bottom: 100px;
+    padding: 10px;
+}
 .splash-entry {
     font-family: 'Amatic SC', cursive;
     font-size: 25px;
@@ -108,26 +136,34 @@ p {
 .splash-one {
     position: relative;
     top: -55px;
-    visibility: hidden;
+    visibility: visible;
 }
 
 .splash-two {
     color: whitesmoke;
     position: relative;
-    top: -90px;
+    top: -120px;
     visibility: hidden;
 }
 
 .splash-three {
     color: whitesmoke;
     position: relative;
-    top: -200px;
+    top: -230px;
     margin: 40px 0px 0px 0px;
-    visibility: visible;
+    visibility: hidden;
 }
 
-.splash-about {
+.splash-four {
+    color: whitesmoke;
+    position: relative;
+    top: -280px;
+    margin: 40px 0px 0px 0px;
+    visibility: hidden;
+}
 
+#crawl-id, #project-key, #project-id {
+    color: black;
 }
 
 #key-info, #new-id {
@@ -174,17 +210,20 @@ p {
         top: -160px;
     }
     .splash-two {
-        top: -200px;
+        top: -250px;
     }
     .splash-three {
-        top: -320px;
+        top: -400px;
+    }
+    .splash-four {
+        top: -430px;
     }
 }
 
 @media only screen and (max-width: 337px) {
     .prompt {
-        top: 75px;
-        height: 400px;
+        top: 60px;
+        height: 450px;
     }
     #title {
         bottom: 290px;
@@ -192,7 +231,11 @@ p {
     .splash-one {
         top: -250px;
     }
+   
 /*    .splash-three {
         top: -380px;
+    } */
+/*    .splash-four {
+        top: -500px;
     } */
 }
