@@ -161,15 +161,6 @@ var suggestions = database.ref('/suggestions')
 var user = ""
 var suggArray = []
 var searchedLocation = ""
-var queryURL = "http://localhost:1234/search?location=" + searchedLocation
-
-
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(response){
-  alert(response)
-})
 
 //Below is the chat function.
 $(document).on("click", "#submitSearch", function(){
