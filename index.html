@@ -160,13 +160,8 @@ var chat = database.ref('/chat')
 var suggestions = database.ref('/suggestions')
 var user = ""
 var suggArray = []
-var searchedLocation = ""
 
 //Below is the chat function.
-$(document).on("click", "#submitSearch", function(){
-  searchedLocation = $("#searchLocation").val()
-  alert(searchedLocation)
-})
 
 $(document).on("click", "#enter", function(){
   chat.push({
