@@ -19,14 +19,15 @@
                 <a class="navbar-brand" href="#">CRAWL</a>
             </div> -->
         <ul class="nav navbar-nav">
-            <li id="about"><a href="splash.html">Home</a></li>
-            <li id="about"><a href="aboutcrawl.html">ABOUT CRAWL</a></li>
-            <li>
-                <form class="form-inline search-crawl">
+            <li class="about"><a href="splash.html">Home</a></li>
+            <li class="about"><a href="aboutcrawl.html">ABOUT CRAWL</a></li>
+            <li class="about" id="crawl-link"><a href="crawllist.html">FIND A CRAWL</a></li>
+            <!--   <li>
+               <form class="form-inline search-crawl">
                     <input class="form-control" id="crawl-search-input" type="text" placeholder="Search For a Crawl">
                     <button class="form-control" type="submit">Search</button>
-                </form>
-            </li> 
+                </form> 
+            </li> -->
         </ul>  
     </div>
 </nav>
@@ -72,13 +73,20 @@
         <div class="row splash-entry splash-three">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <form id="newcrawlid">
+            <!--    <form id="newcrawlid"> -->
                     <span id="input-crawl-create">Name Your Crawl: <input type="text" id="crawl-id"></span>
                     <input id="new-id" type="submit">
-                </form>
+            <!--    </form> -->
             </div>
             <div class="col-md-3"></div>
-        </div>    
+        </div>
+        <div class="row splash-entry splash-four">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div id="display-p-and-id"></div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
     </div>
 </div>
         
@@ -86,6 +94,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+<script type="text/javascript" src="commonlogic.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" 
 integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" 
@@ -101,29 +110,53 @@ crossorigin="anonymous"></script>
   };
 firebase.initializeApp(config);
 </script>
-<script>
+<!-- <script>
 $(document).ready(function() {
 var database = firebase.database()
-var multiKeyArray = []
+var initID = ""
 var id = ""
+var idArray = []
+var password = 0
+var idStorage = database.ref('/idStorage')
+var connection = 0
 
 $(document).on("click", ".create", function(){
-    console.log("working")
+//    console.log("working")
     $(".splash-one").attr("style", "visibility: hidden")
     $(".splash-three").attr("style", "visibility: visible")
 })
+
 $(document).on("click", ".join", function(){
-    console.log("working")
+//    console.log("working")
     $(".splash-one").attr("style", "visibility: hidden")
     $(".splash-two").attr("style", "visibility: visible")
-    console.log(id)
-    console.log(multiKeyArray)
+//    console.log(id)
+//    console.log(multiKeyArray)
 })
+
 $(document).on("click", "#new-id", function(){
-    id = $("#crawl-id").val()
-    multiKeyArray.push(id)
+    initID = ($("#crawl-id").val())
+    id = initID.toUpperCase()
+    password = Math.random().toString(36).slice(-8)
+    connection ++
+    idStorage.push({
+        CrawlId: id,
+        password: password,
+    connection: connection,  
+  })    
+
+database.ref('idStorage').on('child_added', function(snap){
+    idArray.push(snap.val().CrawlId)
+    idArray.sort()
+    console.log(idArray)
+    $(".crawl-about").append("<p>" + snap.val().CrawlId + "</p>")
+}, function (errorObject){
+        console.log("The read failed:" +errorObject)
+})    
 })
+
+
 })
-</script>
+</script> -->
 </body>
 </html>

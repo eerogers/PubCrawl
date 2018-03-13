@@ -7,7 +7,7 @@ p {
     font-size: 18px;
     padding: 10px 15px 0px 15px;
     position: relative;
-    bottom: 85px;
+   /* bottom: 85px; */
     text-align: center;
     font-family: 'Quicksand', sans-serif;
     /*font-family: 'Nanum Myeongjo', serif;*/
@@ -35,7 +35,7 @@ p {
     float: right;
 }
 
-#about {
+.about {
     color: black;
     border-radius: 5px;
     font-size: 25px;
@@ -82,8 +82,17 @@ p {
 
 .about-section {
     position: relative;
-    bottom: 60px;
+    bottom: 190px;
 }
+
+.crawl-section {
+    position: relative;
+    bottom: 190px;
+    height: 250px;
+    overflow: auto; 
+    font-family: 'Amatic SC', cursive;
+}
+
 #title {
    /* font-family: 'Amatic SC', cursive; */
    /*  font-family: 'Berkshire Swash', cursive; */
@@ -97,6 +106,37 @@ p {
     bottom: 70px;
 }
 
+#title2 {
+    /* font-family: 'Amatic SC', cursive; */
+    /*  font-family: 'Berkshire Swash', cursive; */
+     font-family: 'Bowlby One SC', cursive; 
+    /* font-family: 'Shrikhand', cursive; */
+     font-size: 50px;
+     color: whitesmoke;
+     padding: 10px 0px 0px 0px;
+     text-align: center;
+     position: relative;
+     bottom: 180px;
+ }
+
+ #title3 {
+    /* font-family: 'Amatic SC', cursive; */
+    /*  font-family: 'Berkshire Swash', cursive; */
+    font-family: 'Bowlby One SC', cursive; 
+    /* font-family: 'Shrikhand', cursive; */
+     font-size: 50px;
+     color: whitesmoke;
+     padding: 10px 0px 0px 0px;
+     text-align: center;
+     position: relative;
+     bottom: 190px;
+ }
+
+#display-p-and-id {
+    position: relative;
+    bottom: 100px;
+    padding: 10px;
+}
 .splash-entry {
     font-family: 'Amatic SC', cursive;
     font-size: 25px;
@@ -126,8 +166,16 @@ p {
     visibility: hidden;
 }
 
-.splash-about {
+.splash-four {
+    color: whitesmoke;
+    position: relative;
+    top: -280px;
+    margin: 40px 0px 0px 0px;
+    visibility: hidden;
+}
 
+#crawl-id {
+    color: black;
 }
 
 #key-info, #new-id {
@@ -179,6 +227,9 @@ p {
     .splash-three {
         top: -400px;
     }
+    .splash-four {
+        top: -430px;
+    }
 }
 
 @media only screen and (max-width: 337px) {
@@ -192,7 +243,11 @@ p {
     .splash-one {
         top: -250px;
     }
+    
 /*    .splash-three {
         top: -380px;
+    } */
+/*    .splash-four {
+        top: -500px;
     } */
 }
