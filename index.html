@@ -85,33 +85,54 @@
 
       <div class="col-md-5">
         <div class="card-columns" style="width: 100%">
-          <div class="card h-300" id="search-box">
+          <div class="card search-column" id="search-box">
             <div class="card-header search-header">
               <form class="form-inline my-2 my-lg-0">
                 <input type="text" class="form-control" id="searchLocation" placeholder="City or Zip Code">
                 <button class="btn my-2 my-sm-0" type="submit" id="search-btn">Search</button>
               </form>
             </div>
+            <!-- <div class = "card-body results-box">Hello</div> -->
             <div class="card-body" id="search-results">
-
-              <!-- <div class="row no-gutter">
-                <div class="card-group search-card">
-                  <div class="card search-picture">
-                    <div class="card-body search-picture-body">
-                    </div>
-                  </div>
-                  <div class="card search-content">
-                    <div class="card-body chat">
-                      <h5 class="card-title">McDonald's</h5>
-                      <p>Address</p>
-                    </div>
-                  </div>
+              <!-- <div class="container-fluid search-container"> -->
+              <div class="d-flex flex-row align-content-start flex-wrap">
+                <div class="p-2">
+                  <img src="https://lh5.googleusercontent.com/p/AF1QipOctbc6jbDEohubYP1IDuoeDr1ALa0HmRUbmhxs=w100-h115-p-k-no" class="img-fluid rounded"
+                    id="search-results">
                 </div>
-              </div> -->
+                <div class="p-2 ml-auto">Title</div>
+                <div class="p-2 ml-auto align-self-center text-right">Rating</div>
+                <div class="p-2 ml-auto align-self-end text-right">Address</div>
+              </div>
+              <!-- <div class="d-flex flex-column justify-content-start align-items-end">
+                  <div class="p-2">Rating</div>
+                  <div class="p-2">Address</div>
+                </div> -->
 
-              
+
+              <!-- <div class="row">
+                  <div class="col-md-4">
+                    <div class="container justify-content-start">
+                      <img src="https://lh5.googleusercontent.com/p/AF1QipOctbc6jbDEohubYP1IDuoeDr1ALa0HmRUbmhxs=w100-h115-p-k-no" class="img-fluid rounded"
+                        id="search-results">
+
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="container justify-content-end">
+                      <h5 class="card-title" id="search-title">The Pump Room</h5>
+                      <p class="search-p">4.4 (81)</p>
+                      <p class="search-p">1532 W Chapman Ave, Orange, CA 92868, USA</p>
+                      <p class="search-p">801-414-1548</p>
+                    </div>
+                  </div>
+                </div> -->
+              <!-- </div> -->
             </div>
           </div>
+          <!-- <div class = "card h-75">
+            <div class = "card-body results-box">Hello</div>
+          </div> -->
         </div>
       </div>
     </div>

@@ -112,7 +112,7 @@ input#searchLocation.form-control {
     margin-right: 5px;
 }
 
-div.card-body {
+div.card-body.chat {
     height: 350px;
 }
 
@@ -129,9 +129,9 @@ html,body, .container-fluid {
     width:100%;
 }
 
-#search-results {
+/* #search-results {
     height: 95%;
-}
+} */
 
 .well.well-trans, .panel-default {
 	/* background-color: rgba(139, 138, 138, 0.6); */
@@ -201,16 +201,40 @@ button, .btn {
     column-count: 1;
 }
 
-div#search-results.card-body {
-    /* height: 633px; */
-    /* max-height: 500px; */
-    height: 75px;
-    max-height: 75px;
-}
 
 #search-box {
     margin: 20px 0 20px 0;
 }
+
+#search-title, .search-p {
+    text-align: right;
+}
+
+.search-p {
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 0.5;
+}
+
+#search-image {
+    object-fit: contain;
+    /* width: 100%; */
+    max-width: auto;
+    /* height: auto; */
+}
+
+/* .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+} */
 
 /* .col-md-4, .col-md-3, .col-md-5 {
     margin: 2px;
