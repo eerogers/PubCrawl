@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pub Crawl Website</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> -->
+    <link rel="stylesheet" href="assets/css/style2.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/chat.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Berkshire+Swash|Bowlby+One+SC|Gloria+Hallelujah|Shrikhand"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <!-- navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- <div class="navbar-header">
+                <a class="navbar-brand" href="#">CRAWL</a>
+            </div> -->
+            <ul class="navbar-nav navbar-right">
+                <li id="about">
+                    <a href="#">ABOUT CRAWL</a>
+                </li>
+                <li>
+                    <form class="form-inline search-crawl">
+                        <input class="form-control mr-sm-2" id="crawl-search-input" type="text" placeholder="Search For a Crawl">
+                        <button class="form-control" type="submit">Search</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- end of navbar -->
+
+    <div class="container-fluid">
+        <div class="row bodycontent">
+            <div class="col-md-5">
+                <!-- panels 3 -->
+                <div class="row">
+                    <div class="card" style="width: 100%;" id="googleMapsCard">
+                        <div class="card-body">
+                            <!-- <h6 class="card-title"></h6> -->
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="well well-trans" style="width: 100%" id="itineraryCard">
+                        <div class="well">
+                            <h6 class="card-title">List</h6>
+                            <div id="list_section">
+                                <ul></ul>
+                                <form id="newItemForm">
+                                    <input type="text" id="itemField" placeholder="Item" />
+                                    <input type="submit" id="add" value="add" class="btn btn-danger" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+          <div class="card" style="width: 100%;" id="chatCard">
+            <div class="card-body">
+              <h6 class="card-title">Chat</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div> -->
+            </div>
+
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="well well-trans" style="width: 100%;" id="googleMapsCard">
+                        <div class="card-body">
+                            <h6 class="card-title">Chat</h6>
+                            <div id="map"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="well well-trans" style="height: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+
+                        <form>
+                            <div class="form-group">
+
+                                <label for="search">Location Search</label>
+                                <input type="text" class="form-control" id="searchLocation" placeholder="City or ZIP">
+                                <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+                            </div>
+                            <div id="yelpResults">
+
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <!-- <div class="col-sm-3 col-sm-offset-4 frame">
+      <ul></ul>
+      <div>
+        <div class="msj-rta macro">
+          <div class="text text-r" style="background:whitesmoke !important">
+            <input class="mytext" placeholder="Type a message" />
+          </div>
+
+        </div>
+        <div style="padding:10px;">
+          <span class="glyphicon glyphicon-share-alt"></span>
+        </div>
+      </div>
+    </div> -->
+
+
+
+
+        <!-- Footer Start -->
+        <footer class="footer text-danger">
+            Copyright 2018
+
+        </footer>
+        <!-- Footer End -->
+
+    </div>
+
+
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- MomentJS -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- Javacsript file -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <!-- Google API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74&callback=initMap" async
+        defer></script>
+
+
+</body>
+
+</html>

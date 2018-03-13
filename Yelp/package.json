@@ -1,0 +1,23 @@
+{
+  "name": "yelp1",
+  "version": "1.0.0",
+  "main": "\u001b[A\"Yelp API\"",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "\u001b[C\u001b[D\u001b[D",
+  "license": "ISC",
+  "keywords": [
+    "\u001b[A\u001b[A\u001b[C\u001b[C\u001b[C\"Yelp",
+    "API\""
+  ],
+  "description": "\"Yelp API on Heroku\"",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eerogers/PubCrawl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eerogers/PubCrawl/issues"
+  },
+  "homepage": "https://github.com/eerogers/PubCrawl#readme"
+}

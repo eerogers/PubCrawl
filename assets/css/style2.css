@@ -1,0 +1,164 @@
+/* body {
+    background-image: url("../images/bulbs2.jpg");
+} */
+
+.navbar{
+    background-color: rgb(35, 43, 43);
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: rgb(35, 43, 43);
+    width:100%;
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    font-size: 25px;
+    color: #777;
+}
+
+.nav-link {
+    color: #777;
+    font-size: 25px; 
+
+}
+
+
+.container-fluid {
+    /* position: relative; */
+    margin-left: auto;
+    /* margin-right: auto; */
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+}
+
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+
+.navbar-nav {
+    float: right;
+}
+
+#about {
+    color: black;
+    border-radius: 5px;
+    font-size: 25px;
+    font-family: 'Amatic SC', cursive;
+    padding: 0px 10px 0px 0px;
+}
+
+.search-crawl {
+    margin: 8px 0px 0px 0px;
+    font-size: 16px;
+}
+
+
+.splash-entry {
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+    position: relative;
+    text-align: right;
+    top: 95px;
+}
+
+.splash-one {
+    position: relative;
+    top: -55px;
+    visibility: visible;
+}
+
+.splash-two {
+    color: whitesmoke;
+    position: relative;
+    top: -90px;
+    visibility: hidden;
+}
+
+.splash-three {
+    color: whitesmoke;
+    position: relative;
+    top: -200px;
+    margin: 40px 0px 0px 0px;
+    visibility: hidden;
+}
+
+#key-info, #new-id {
+    background-color:  rgb(35, 43, 43);
+    margin: 10px 0px 10px 0px;
+    border-radius: 3px; 
+    padding: 10px 20px 10px 20px;
+    border-style: solid;
+    border-color: rgb(35, 43, 43);
+    border-width: 1px;
+    margin: 5px;
+}
+
+.splash-buttons {
+    background-color: rgb(35, 43, 43);
+    color: whitesmoke;
+    border-style: solid;
+    border-color: rgb(35, 43, 43);
+    border-width: 1px;
+    margin: 10px 0px 10px 0px;
+    border-radius: 3px; 
+    padding: 10px 20px 10px 20px;
+}
+
+#key-input, #crawl-input {
+    padding: 5px;
+}
+
+@media only screen and (max-width: 1199px) {
+    .splash-three {
+        top: -240px;
+    }
+}    
+
+@media only screen and (max-width: 991px) {
+    .prompt {
+        height: 300px;
+        top: 120px;
+    }
+    #title {
+        bottom: 160px;
+    }
+    .splash-one {
+        top: -160px;
+    }
+    .splash-two {
+        top: -200px;
+    }
+    .splash-three {
+        top: -320px;
+    }
+}
+
+@media only screen and (max-width: 337px) {
+    .prompt {
+        top: 75px;
+        height: 400px;
+    }
+    #title {
+        bottom: 290px;
+    }
+    .splash-one {
+        top: -250px;
+    }
+/*    .splash-three {
+        top: -380px;
+    } */
+}
