@@ -49,7 +49,7 @@ $(document).ready(function () {
 
     $("#submitSearch").on("click", function (event) {
         event.preventDefault();
-        var returnedBarArray = []
+        returnedBarArray = []
         searchInput = $("#searchLocation").val().trim()
 
         googlePlacesQueryURL = "https://crossorigin.me/https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+" + searchInput + "&key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74"
