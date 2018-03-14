@@ -116,6 +116,7 @@ div.card-body.chat {
     height: 350px;
 }
 
+
 body {
     background-image: url(../images/bar1.jpg);
     background-attachment: scroll;
@@ -208,12 +209,19 @@ button, .btn {
 
 #search-title, .search-p {
     text-align: right;
+    /* margin-top: 0; */
+    /* margin-bottom: 0; */
+    color: rgb(255,255,183);
+}
+
+p, .card-title {
+    margin-bottom: .3rem;
 }
 
 .search-p {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 100;
-    line-height: 0.5;
+    line-height: 1;
 }
 
 #search-image {
@@ -223,22 +231,10 @@ button, .btn {
     /* height: auto; */
 }
 
-/* .clearfix:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
+img {
+    min-height: 75px;
+    min-width: 75px;
 }
-
-.clearfix {
-    display: inline-block;
-} */
-
-/* .col-md-4, .col-md-3, .col-md-5 {
-    margin: 2px;
-} */ */
 
 
 
