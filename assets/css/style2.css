@@ -1,0 +1,241 @@
+body {
+    background-image: url("../images/bulbs2.jpg");
+}
+
+p {
+    color: lightgray;
+    font-size: 18px;
+    padding: 10px 15px 0px 15px;
+    position: relative;
+   /* bottom: 85px; */
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Nanum Myeongjo', serif;*/
+}
+.navbar{
+    background-color: rgb(35, 43, 43);
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: rgb(35, 43, 43);
+    width:100%;
+    
+}
+
+.navbar-brand {
+    opacity: 1;
+    color: rgb(35, 43, 43);
+    background-color: white;
+    font-size: 30px;
+    font-family: 'Bowlby One SC', cursive;
+    border-radius: 2px;
+    padding: 16px 20px 10px 20px
+}
+
+.navbar-nav {
+    float: right;
+}
+
+.about {
+    color: black;
+    border-radius: 5px;
+    font-size: 25px;
+    font-family: 'Amatic SC', cursive;
+    padding: 0px 10px 0px 0px;
+}
+
+.search-crawl {
+    margin: 8px 0px 0px 0px;
+    font-size: 16px;
+}
+
+.prompt {
+    background-image: url("../images/hardwood1.jpg");
+    text-align: center;
+    position: relative;
+    top: 160px;
+    height: 250px;
+    border-radius: 5px;
+    opacity: 0.8;
+}
+
+.prompt-about {
+    background-image: url("../images/hardwood1.jpg");
+    text-align: center;
+    position: relative;
+    top: 160px;
+    height: 360px;
+    border-radius: 5px;
+    opacity: 0.8;
+}
+
+.about-section {
+    position: relative;
+    bottom: 210px;
+}
+
+.crawl-section {
+    position: relative;
+    bottom: 190px;
+    height: 250px;
+    overflow: auto; 
+    font-family: 'Amatic SC', cursive;
+}
+
+#title {
+   /* font-family: 'Amatic SC', cursive; */
+   /*  font-family: 'Berkshire Swash', cursive; */
+    font-family: 'Bowlby One SC', cursive; 
+   /* font-family: 'Shrikhand', cursive; */
+    font-size: 50px;
+    color: whitesmoke;
+    padding: 10px 0px 0px 0px;
+    text-align: center;
+    position: relative;
+    bottom: 70px;
+}
+
+#title2 {
+    /* font-family: 'Amatic SC', cursive; */
+    /*  font-family: 'Berkshire Swash', cursive; */
+     font-family: 'Bowlby One SC', cursive; 
+    /* font-family: 'Shrikhand', cursive; */
+     font-size: 50px;
+     color: whitesmoke;
+     padding: 10px 0px 0px 0px;
+     text-align: center;
+     position: relative;
+     bottom: 180px;
+ }
+
+ #title3 {
+    /* font-family: 'Amatic SC', cursive; */
+    /*  font-family: 'Berkshire Swash', cursive; */
+    font-family: 'Bowlby One SC', cursive; 
+    /* font-family: 'Shrikhand', cursive; */
+     font-size: 50px;
+     color: whitesmoke;
+     padding: 10px 0px 0px 0px;
+     text-align: center;
+     position: relative;
+     bottom: 200px;
+ }
+
+#display-p-and-id {
+    position: relative;
+    bottom: 100px;
+    padding: 10px;
+}
+.splash-entry {
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+    position: relative;
+    text-align: center;
+    top: 95px;
+}
+
+.splash-one {
+    position: relative;
+    top: -55px;
+    visibility: visible;
+}
+
+.splash-two {
+    color: whitesmoke;
+    position: relative;
+    top: -120px;
+    visibility: hidden;
+}
+
+.splash-three {
+    color: whitesmoke;
+    position: relative;
+    top: -230px;
+    margin: 40px 0px 0px 0px;
+    visibility: hidden;
+}
+
+.splash-four {
+    color: whitesmoke;
+    position: relative;
+    top: -280px;
+    margin: 40px 0px 0px 0px;
+    visibility: hidden;
+}
+
+#crawl-id, #project-key, #project-id {
+    color: black;
+}
+
+#key-info, #new-id {
+    background-color:  rgb(35, 43, 43);
+    margin: 10px 0px 10px 0px;
+    border-radius: 3px; 
+    padding: 10px 20px 10px 20px;
+    border-style: solid;
+    border-color: rgb(35, 43, 43);
+    border-width: 1px;
+    margin: 5px;
+}
+
+.splash-buttons {
+    background-color: rgb(35, 43, 43);
+    color: whitesmoke;
+    border-style: solid;
+    border-color: rgb(35, 43, 43);
+    border-width: 1px;
+    margin: 10px 0px 10px 0px;
+    border-radius: 3px; 
+    padding: 10px 20px 10px 20px;
+}
+
+#key-input, #crawl-input {
+    padding: 5px;
+}
+
+@media only screen and (max-width: 1199px) {
+    .splash-three {
+        top: -240px;
+    }
+}    
+
+@media only screen and (max-width: 991px) {
+    .prompt {
+        height: 300px;
+        top: 120px;
+    }
+    #title {
+        bottom: 160px;
+    }
+    .splash-one {
+        top: -160px;
+    }
+    .splash-two {
+        top: -250px;
+    }
+    .splash-three {
+        top: -400px;
+    }
+    .splash-four {
+        top: -430px;
+    }
+}
+
+@media only screen and (max-width: 337px) {
+    .prompt {
+        top: 60px;
+        height: 450px;
+    }
+    #title {
+        bottom: 290px;
+    }
+    .splash-one {
+        top: -250px;
+    }
+   
+/*    .splash-three {
+        top: -380px;
+    } */
+/*    .splash-four {
+        top: -500px;
+    } */
+}
