@@ -31,8 +31,12 @@ var config = {
     var crawlSync = ""
     var user = ""
     var suggArray = []
+    var deletedSuggestions = database.ref('/deletedSuggestions')
+    var deleted = []
    
-
+function mainLoad(){
+    console.log("working")
+}
     $(document).on("click", ".create", function(){
         $(".splash-one").attr("style", "visibility: hidden")
         $(".splash-three").attr("style", "visibility: visible")
@@ -56,7 +60,8 @@ var config = {
         idStorage.push({
             CrawlId: id,
             password: password,
-        })  
+        })
+        $("#crawl-id").val("")  
       $(".splash-three").attr("style", "visibility: hidden")
       $(".splash-four").attr("style", "visibility: visible")
       $("#display-p-and-id").html("<p>Your Crawl ID = "+initID+"</p><p>Your Password = " + password + "</p>") 
@@ -96,6 +101,8 @@ var config = {
         else {
             $("#incorrect").text("Incorrect login information. Please check your id and password and try again.")
         }
+        $("#project-id").val("")
+        $("#project-key").val("")
     })
 
    database.ref('/activeAccount').on('child_added', function(snap){
@@ -112,32 +119,72 @@ var config = {
             group: crawlSync,
             message: $("#entry-chat").val()
         })
+        $("#entry-chat").val("")
       })
     
     database.ref('/chatsBox').on('child_added', function(snap){
         console.log(snap.val().group)
         if(snap.val().group == crawlSync) {
-            $(".chat-box").append("<br>" + snap.val().group + ": " + snap.val().message)
+            $(".chat-box").append("<br>" + snap.val().user + ": " + snap.val().message)
         }
      }, function (errorObject){
          console.log("The read failed:" +errorObject)
      })
- 
+
+     $(document).on("click", "#personalID", function(){
+         user = $("#entry-id").val()
+         $("#entry-id").val("")
+     })
+
 //suggestions
-    $(document).on("click", "#add-item", function(){
+    $(document).on("click", "#add", function(){
         suggestionsBox.push({
             user: user,
             group: crawlSync,
-            suggestion: $("#itemField").val()
+            suggestion: $("#itemField").val(),
+            randomID: Math.random().toString(36).slice(-8)
         })
+        $("#itemField").val("")
     })
    
     database.ref('/suggestionsBox').on('child_added', function(snap){
         console.log(snap.val().group)
+        console.log(deleted.includes(snap.val().suggestion))
         if(snap.val().group == crawlSync) {
-            $("#sugs").append("<li>" + snap.val().group + ": " + snap.val().suggestion)
+            $("#sugs").append("<button class='x-buttons' id='"+snap.val().randomID+"'>X</button><p class='barsPicked' id='"+snap.val().randomID+"' dataIndex ='"+snap.val().randomID+"'>" + snap.val().suggestion + "</li>")
         }
     }, function (errorObject){
         console.log("The read failed:" +errorObject)
     })
+
+    $(document).on("click", ".x-buttons", function(){
+        var deleteData = ($(this).attr("id"))
+        deletedSuggestions.push({
+            group: crawlSync,
+            randomID: deleteData
+          })
+        $(this).remove()
+        $("#" + deleteData).remove()
+    })
+
+function mainLoad(){
+    deletedSuggestions.push({
+        group: "x",
+        suggestion: "x"
+    })
+}
+    mainLoad()
+    database.ref('/deletedSuggestions').on('child_added', function(snap){
+        for(i=0;i<deleted.length;i++){
+            console.log($("#" + deleted[i]))
+            $("#" + deleted[i]).remove()
+            $("#" + deleted[i]).remove() //try it here twice to see if that helps with reload problem
+        }
+        if (snap.val().group == crawlSync){
+            deleted.push(snap.val().randomID)
+            console.log(deleted)
+        }
+        }, function (errorObject){
+            console.log("The read failed:" +errorObject)
+        })
 })
