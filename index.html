@@ -54,7 +54,7 @@
   </nav>
 
   <div class="container-fluid">
-  <!-- added jumbotron: displays name of crawl whose id has been used to access the main page -->  
+    <!-- added jumbotron: displays name of crawl whose id has been used to access the main page -->
     <div class="jumbotron"></div>
     <div class="row bodycontent">
       <div class="col-md-7">
@@ -77,62 +77,62 @@
 
                 </ol>
               </div>
+              <div class="card-footer">
+                <form class="form-inline my-2 my-lg-0" id="newItemForm">
+                  <input class="form-control" type="text" id="itemField" placeholder="Item" />
+                  <div class="input-group-append">
+                    <input type="submit" class="btn my-2 my-sm-0" id="add" value="Add" />
+
+                  </div>
+                </form>
+              </div>
             </div>
             <div class="card itinerary">
               <div class="card-header chat-header">Chat</div>
               <div class="card-body chat">
-                <h5 class = "card-title">Talk with your group!</h5>
+                <h5 class="card-title">Talk with your group!</h5>
                 <ul class="card-title chat-box">
-                  
+
                 </ul>
-              
+
                 <!-- <div class="chat-box"></div> -->
               </div>
               <div class="card-footer">
                 <form class="form-inline my-2 my-lg-0">
                   <input class="form-control" id="entry-chat" type="text" placeholder="Submit message...">
                   <div class="input-group-append">
-                    <input type="submit" class="btn my-2 my-sm-0" id="enter" value="Enter" />
-<!-- master
-        <div class="row">
-          <div class="card" style="width: 100%" id="itineraryCard">
-            <div class="card-body">
-              <h6 class="card-title">Suggestions</h6>
-              <div id="list_section">
-                  <div id="sugs"></div>
-              <!--    <form id="newItemForm"> -->
-                      <input type="text" id="itemField" placeholder="Item" />
-                      <input type="submit" id="add" value="Add" />
-               <!--   </form> -->
-                    <!--
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="card" style="width: 100%;" id="chatCard">
-            <div class="card-body">
-              <div class="chat-box"></div>
-                <input id="entry-chat" type="text"><input type="submit" id="enter" value="Enter"/>
-                <input id="entry-id" type="text" placeholder="Set User ID"><input type="submit" id="personalID" value="Enter"/>
-            </div>
-          </div>
-        </div>
-      </div>
-        -->
-
+                    <input type="submit" class="btn my-2 my-sm-0" id="enter" value="Enter">
 
                   </div>
 
                 </form>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control" id="entry-id" type="text" placeholder="Set User ID">
+                  <div class="input-group-append">
+                    <input type="submit" class="btn my-2 my-sm-0" id="personalID" value="Enter">
 
+                  </div>
 
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-<!-- master
+      <!-- master
+
+<div class="row">
+<div class="card" style="width: 100%;" id="chatCard">
+<div class="card-body">
+<div class="chat-box"></div>
+  <input id="entry-chat" type="text"><input type="submit" id="enter" value="Enter"/>
+  <input id="entry-id" type="text" placeholder="Set User ID"><input type="submit" id="personalID" value="Enter"/>
+</div>
+</div>
+</div>
+</div>
+-->
+      <!-- master
                 <label for="search">Location Search</label>
                 <input type="text" class="form-control" id="searchLocation" placeholder="City">
               </div>
@@ -163,10 +163,10 @@
     </div>
 
     <!-- Footer Start -->
-    <footer class="footer">
+    <!-- <footer class="footer">
       Copyright 2018
 
-    </footer>
+    </footer> -->
     <!-- Footer End -->
 
 
@@ -185,7 +185,7 @@
       </script>
 
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-    <script>
+    <!-- <script>
       // Initialize Firebase
       var config = {
         apiKey: "AIzaSyCl09xlknVjb5CyhG8vHftZ0DhXQKQ2xxQ",
@@ -213,6 +213,11 @@
             user: user,
             message: $("#entry-chat").val()
           })
+        })
+
+        $(document).on("click", "#personalID", function () {
+          user = $("#entry-id").val()
+          $("#entry-id").val("")
         })
 
         database.ref('chat').on('child_added', function (snap) {
@@ -246,19 +251,20 @@
 
 
       })
-    </script>
+    </script> -->
 
 
 
 
 
-  
 
-<script type="text/javascript" src="assets/javascript/commonlogic.js"></script>
-  <!-- Google API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74&libraries=places&callback=initMap" async defer>
-</script>
-<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+
+    <script type="text/javascript" src="assets/javascript/commonlogic.js"></script>
+    <!-- Google API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74&libraries=places&callback=initMap"
+      async defer>
+      </script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 </body>
 
 </html>
