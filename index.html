@@ -47,6 +47,8 @@
   <!-- end of navbar -->
 
   <div class="container-fluid">
+  <!-- added jumbotron: displays name of crawl whose id has been used to access the main page -->  
+    <div class="jumbotron"></div>
     <div class="row bodycontent">
       <div class="col-md-8">
         <!-- panels 3 -->
@@ -63,11 +65,11 @@
             <div class="card-body">
               <h6 class="card-title">Suggestions</h6>
               <div id="list_section">
-                  <ul></ul>
-                      <form id="newItemForm">
-                      <input type="text" id="itemField" placeholder="Item" />
-                      <input type="submit" id="add" value="Add" />
-                  </form>
+                  <ul id="sugs"></ul>
+                <!--  <form id="newItemForm"> -->
+                    <input type="text" id="itemField" placeholder="Item" />
+                    <input type="submit" id="add-item" value="Add" />
+                <!--  </form> -->
               </div>
             </div>
           </div>
@@ -128,77 +130,12 @@
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <!-- Javacsript file -->
   <script type="text/javascript" src="assets/javascript/app.js"></script>
+  <script type="text/javascript" src="assets/javascript/commonlogic.js"></script>
 
   <!-- Google API -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74&libraries=places&callback=initMap" async defer>
 </script>
-  
-  
-  
-  
-  <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-  <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyCl09xlknVjb5CyhG8vHftZ0DhXQKQ2xxQ",
-        authDomain: "pubcrawlappl.firebaseapp.com",
-        databaseURL: "https://pubcrawlappl.firebaseio.com",
-        projectId: "pubcrawlappl",
-        storageBucket: "pubcrawlappl.appspot.com",
-        messagingSenderId: "711134769554"
-      };
-      firebase.initializeApp(config);
-</script>
-<script>
-$(document).ready(function() { 
-var database = firebase.database()
-//console.log(database)
-var chat = database.ref('/chat')
-var suggestions = database.ref('/suggestions')
-var user = ""
-var suggArray = []
-
-//Below is the chat function.
-
-$(document).on("click", "#enter", function(){
-  chat.push({
-      user: user,
-      message: $("#entry-chat").val()
-  })
-})
-
-database.ref('chat').on('child_added', function(snap){
-        $(".chat-box").append("<br>" + snap.val().user + ": " + snap.val().message)
-}, function (errorObject){
-        console.log("The read failed:" +errorObject)
-})
-
-//I've linked the suggestion/list box to firebase below.
-//This seems necessary to store the data somewhere and make sure all users can see it.
-//While it won't be possible to delete FROM firebase remotely, 
-//it should still be possible to delete created list items (I THINK).
-
-$(document).on("click", "#addMeToCrawl", function(){
-  suggestions.push({
-    user: user,
-    suggestion: $("#itemField").val()
-  })
-})
-
-//The code below pushes the "suggestion" into an extant array of suggestion items (suggArray).
-//Creating an array seems like the way to go if we want users to be able to manipulate and delete items.
-//Probably will need to sync local arrays somewhere down the line as things are deleted...
-
-database.ref('suggestions').on('child_added', function(snap){
-    suggArray.push(snap.val().suggestion)
-    //console.log(suggArray)
-}, function (errorObject){
-        //console.log("The read failed:" +errorObject)
-})
-  
-
-})
-</script>
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 </body>
 
 </html>
