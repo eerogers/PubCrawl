@@ -107,12 +107,6 @@ $(document).ready(function () {
 
                 barObj.barLat = lat
                 barObj.barLong = long
-                // console.log("barLat in .then = " + barObj.barLat)
-                // console.log("barLong in .then = " + barObj.barLong)
-                // console.log("Open true" + requestResult.results[i].opening_hours[0])
-                // console.log("open hours " + requestResult.results[i].opening_hours[1])
-                // console.log("response" + requestResult.results)
-
 
 
                 returnedBarArray.push(barObj)
@@ -191,6 +185,7 @@ $(document).ready(function () {
                 var imABarAndAddMeToList = returnedBarArray[$(this).attr("dataIndex")].barName
 
                 //append to Suggested Bar List
+                $("#itinerary-title").text("Your Crawl:")
                 $('ol').append("<li class='barsPicked' dataIndex = " + $(this).attr('dataIndex') + ">" + imABarAndAddMeToList + "</li>")
                 var lat = returnedBarArray[$(this).attr("dataIndex")].barLat
                 var long = returnedBarArray[$(this).attr("dataIndex")].barLong
