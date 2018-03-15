@@ -14,7 +14,10 @@ h3{
 
 .well {
     margin: 20px 5px 20px 5px;
+}
 
+#about {
+    margin: 0px 10px 0px 2px;
 }
 
 #googleMapsCard {
@@ -218,6 +221,23 @@ p, .card-title {
     margin-bottom: .3rem;
 }
 
+.search-images {
+    padding-top: 10px;
+}
+
+.search-boxes {
+    border-top-style: solid;
+    border-width: .1px;
+    margin: 1px 0px 0px 0px;
+    padding: 5px 0px 5px 0px;
+}
+
+.search-titles {
+    text-align: right;
+    color: white;
+    font-weight: 200;
+}
+
 .search-p {
     font-size: 13px;
     font-weight: 100;
@@ -236,7 +256,32 @@ img {
     min-width: 75px;
 }
 
+button.addMeToCrawl {
+    font-size: 15px;
+    border-width: .2px;
+    width: 79px;
+    background-color: rgb(62,24,5);
+    float: right;
+}
 
+button.addMeToCrawl:hover {
+    background-color: rgb(35, 43, 43);
+    cursor: pointer;
+}
+
+div.container.current-weather {
+    color: white;
+    display: none;
+}
+
+.temp, .wind, .humidity {
+    padding: 0 10px 0 10px;
+    font-size: 19px;
+}
+
+.card-title {
+    color: white;
+}
 
 
 
