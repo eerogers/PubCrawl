@@ -18,12 +18,12 @@
 <body>
   <!-- navbar -->
   <nav class="navbar navbar-toggleable-md bg-faded">
-      <div class = "container current-weather">Current Weather: 
-          <div class = "temp">Temp</div>
-          <div class = "wind">Wind</div>
-          <div class = "humidity">Humidity</div>
-    
-        </div>
+    <div class="container current-weather">Current Weather:
+      <div class="temp">Temp</div>
+      <div class="wind">Wind</div>
+      <div class="humidity">Humidity</div>
+
+    </div>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -38,12 +38,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" id = "about">About Crawl</a>
+          <a class="nav-link" href="#" id="about">About Crawl</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control" type="text" placeholder="Search Pub Crawls">
-        <button class="btn btn-md" type="submit" id="crawl-btn">Search</button>
+        <div class="input-group-append">
+          <button class="btn btn-md" type="submit" id="crawl-btn">Search</button>
+
+        </div>
       </form>
     </div>
   </nav>
@@ -64,18 +67,32 @@
             <div class="card itinerary">
               <div class="card-header chat-header">Itinerary</div>
               <div class="card-body chat">
-                <h5 class="card-title" id = "itinerary-title">Plan your crawl!</h5>
-                <ol id = "crawl-list">
-                  
+                <h5 class="card-title" id="itinerary-title">Plan your crawl!</h5>
+                <ol id="crawl-list">
+
                 </ol>
               </div>
             </div>
             <div class="card itinerary">
               <div class="card-header chat-header">Chat</div>
               <div class="card-body chat">
-                <h5 class="card-title">Talk with your group!</h5>
-                <p>Hello</p>
-                <p>Hi</p>
+                <h5 class = "card-title">Talk with your group!</h5>
+                <ul class="card-title chat-box">
+                  
+                </ul>
+              
+                <!-- <div class="chat-box"></div> -->
+              </div>
+              <div class="card-footer">
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control" id="entry-chat" type="text" placeholder="Submit message...">
+                  <div class="input-group-append">
+                    <input type="submit" class="btn my-2 my-sm-0" id="enter" value="Enter" />
+
+                  </div>
+
+                </form>
+
               </div>
             </div>
           </div>
@@ -88,12 +105,15 @@
             <div class="card-header search-header" id="search-results-header">
               <form class="form-inline my-2 my-lg-0">
                 <input type="text" class="form-control" id="searchLocation" placeholder="Search by City Name">
-                <button class="btn my-2 my-sm-0" type="submit" id="search-btn">Search</button>
+                <div class="input-group-append">
+                  <button class="btn my-2 my-sm-0" type="submit" id="search-btn">Search</button>
+
+                </div>
               </form>
             </div>
-            
+
             <div class="container" id="search-results-box">
-             
+
             </div>
           </div>
         </div>
@@ -118,7 +138,74 @@
     <script type="text/javascript" src="assets/javascript/app.js"></script>
     <!-- Google API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74&callback=initMap" async
-      defer></script>
+      defer>
+      </script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCl09xlknVjb5CyhG8vHftZ0DhXQKQ2xxQ",
+        authDomain: "pubcrawlappl.firebaseapp.com",
+        databaseURL: "https://pubcrawlappl.firebaseio.com",
+        projectId: "pubcrawlappl",
+        storageBucket: "pubcrawlappl.appspot.com",
+        messagingSenderId: "711134769554"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script>
+      $(document).ready(function () {
+        var database = firebase.database()
+        //console.log(database)
+        var chat = database.ref('/chat')
+        var suggestions = database.ref('/suggestions')
+        var user = ""
+        var suggArray = []
+
+        //Below is the chat function.
+
+        $(document).on("click", "#enter", function () {
+          chat.push({
+            user: user,
+            message: $("#entry-chat").val()
+          })
+        })
+
+        database.ref('chat').on('child_added', function (snap) {
+          $(".chat-box").append('<li class = "chat-list">' + snap.val().user + ": " + snap.val().message + '</li>')
+        }, function (errorObject) {
+          console.log("The read failed:" + errorObject)
+        })
+
+        //I've linked the suggestion/list box to firebase below.
+        //This seems necessary to store the data somewhere and make sure all users can see it.
+        //While it won't be possible to delete FROM firebase remotely, 
+        //it should still be possible to delete created list items (I THINK).
+
+        $(document).on("click", "#addMeToCrawl", function () {
+          suggestions.push({
+            user: user,
+            suggestion: $("#itemField").val()
+          })
+        })
+
+        //The code below pushes the "suggestion" into an extant array of suggestion items (suggArray).
+        //Creating an array seems like the way to go if we want users to be able to manipulate and delete items.
+        //Probably will need to sync local arrays somewhere down the line as things are deleted...
+
+        database.ref('suggestions').on('child_added', function (snap) {
+          suggArray.push(snap.val().suggestion)
+          //console.log(suggArray)
+        }, function (errorObject) {
+          //console.log("The read failed:" +errorObject)
+        })
+
+
+      })
+    </script>
+
+
 
 
 </body>

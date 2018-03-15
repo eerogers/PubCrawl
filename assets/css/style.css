@@ -151,7 +151,7 @@ html,body, .container-fluid {
     max-height: 325px;
 }
 
-.itinerary, .card-header, #search-box {
+.itinerary, .card-header, #search-box, .card-footer {
     background-color: rgba(35, 43, 43, 0.6);
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -163,12 +163,21 @@ div.card-header.chat-header {
     font-family: 'Amatic SC', cursive;
     color: rgb(255,255,183);
     font-weight: bold;
-    padding: 3px;
+    padding: 0px;
 }
 
 .chat {
     /* background-image: url(../images/background-wood-04.jpg); */
     padding: 10px;
+}
+
+li.chat-list {
+    list-style-type: none;
+    color: rgb(255,255,183);
+}
+
+.chat-box {
+    padding: 2px;
 }
 
 .panel-default {
@@ -281,6 +290,14 @@ div.container.current-weather {
 
 .card-title {
     color: white;
+}
+
+#entry-chat {
+    width: 80%;
+}
+
+.card-footer {
+    padding: 1px 1px 1px 1px;
 }
 
 
