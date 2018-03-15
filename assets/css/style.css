@@ -226,6 +226,7 @@ button, .btn {
     color: rgb(255,255,183);
 }
 
+
 p, .card-title {
     margin-bottom: .3rem;
 }
@@ -298,6 +299,20 @@ div.container.current-weather {
 
 .card-footer {
     padding: 1px 1px 1px 1px;
+}
+
+#entry-chat, #itemField {
+    float: left;
+    width: 90%;
+}
+
+#enter, #add {
+    width: 10%;
+}
+
+.chat-box {
+    width: 100%;
+    overflow: auto;
 }
 
 

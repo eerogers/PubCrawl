@@ -1,3 +1,5 @@
+<!-- test test deleted? -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,6 +54,8 @@
   </nav>
 
   <div class="container-fluid">
+  <!-- added jumbotron: displays name of crawl whose id has been used to access the main page -->  
+    <div class="jumbotron"></div>
     <div class="row bodycontent">
       <div class="col-md-7">
         <div class="row">
@@ -61,6 +65,7 @@
             </div>
           </div>
         </div>
+
 
         <div class="row no-gutter">
           <div class="card-group">
@@ -88,16 +93,53 @@
                   <input class="form-control" id="entry-chat" type="text" placeholder="Submit message...">
                   <div class="input-group-append">
                     <input type="submit" class="btn my-2 my-sm-0" id="enter" value="Enter" />
+<!-- master
+        <div class="row">
+          <div class="card" style="width: 100%" id="itineraryCard">
+            <div class="card-body">
+              <h6 class="card-title">Suggestions</h6>
+              <div id="list_section">
+                  <div id="sugs"></div>
+              <!--    <form id="newItemForm"> -->
+                      <input type="text" id="itemField" placeholder="Item" />
+                      <input type="submit" id="add" value="Add" />
+               <!--   </form> -->
+                    <!--
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card" style="width: 100%;" id="chatCard">
+            <div class="card-body">
+              <div class="chat-box"></div>
+                <input id="entry-chat" type="text"><input type="submit" id="enter" value="Enter"/>
+                <input id="entry-id" type="text" placeholder="Set User ID"><input type="submit" id="personalID" value="Enter"/>
+            </div>
+          </div>
+        </div>
+      </div>
+        -->
+
 
                   </div>
 
                 </form>
+
 
               </div>
             </div>
           </div>
         </div>
       </div>
+<!-- master
+                <label for="search">Location Search</label>
+                <input type="text" class="form-control" id="searchLocation" placeholder="City">
+              </div>
+              <button id="submitSearch" type="submit" class="btn btn-primary">Submit </button>
+              <div id="googleResult">
+-->
+
 
       <div class="col-md-5">
         <div class="card-columns" style="width: 100%">
@@ -209,6 +251,14 @@
 
 
 
+
+  
+
+<script type="text/javascript" src="assets/javascript/commonlogic.js"></script>
+  <!-- Google API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh5EasiMiQmQHC_7-rQSPoZkZL1X4rK74&libraries=places&callback=initMap" async defer>
+</script>
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 </body>
 
 </html>

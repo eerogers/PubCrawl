@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CRAWL</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style2.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Berkshire+Swash|Bowlby+One+SC|Gloria+Hallelujah|Shrikhand" rel="stylesheet">
+</head>
+<body>
+ <!-- navbar -->
+ <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!--    <div class="navbar-header">
+                <a class="navbar-brand" href="#">CRAWL</a>
+            </div> -->
+        <ul class="nav navbar-nav">
+            <li class="about"><a href="splash.html">Home</a></li>
+            <li class="about"><a href="aboutcrawl.html">ABOUT CRAWL</a></li>
+            <li class="about" id="crawl-link"><a href="crawllist.html">FIND A CRAWL</a></li>
+            <!--   <li>
+               <form class="form-inline search-crawl">
+                    <input class="form-control" id="crawl-search-input" type="text" placeholder="Search For a Crawl">
+                    <button class="form-control" type="submit">Search</button>
+                </form> 
+            </li> -->
+        </ul>  
+    </div>
+</nav>
+      <!-- end of navbar -->
+<div class="container">
+    <div class="row splash">
+        <div class="row">
+            <div class="col-md-3"></div>
+                <div class="col-md-6 prompt">
+                </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="row" id="title">CRAWL</div>
+                    </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+        <div class="row splash-entry splash-one">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <button class="splash-buttons create">Create a Crawl</button>
+            </div>
+            <div class="col-md-3">
+                <button class="splash-buttons join">Join a Crawl</button>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row splash-entry splash-two">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+            <!--    <form id="crawlandkey"> -->
+                    <span id="crawl-input">Crawl ID:  <input type="text" id="project-id"></span>
+                    <span id="key-input">Password:  <input type="text" id="project-key"></span>
+                    <input id="key-info" type="submit">
+                    <span id="incorrect"></span>
+            <!--    </form> -->
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row splash-entry splash-three">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+            <!--    <form id="newcrawlid"> -->
+                    <span id="input-crawl-create">Name Your Crawl: <input type="text" id="crawl-id"></span>
+                    <input id="new-id" type="submit">
+            <!--    </form> -->
+            <div id="redundant"></div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row splash-entry splash-four">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div id="display-p-and-id"></div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+        
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+<script type="text/javascript" src="assets/javascript/commonlogic.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" 
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" 
+crossorigin="anonymous"></script> 
+<!--<script>
+   var config = {
+    apiKey: "AIzaSyCl09xlknVjb5CyhG8vHftZ0DhXQKQ2xxQ",
+    authDomain: "pubcrawlappl.firebaseapp.com",
+    databaseURL: "https://pubcrawlappl.firebaseio.com",
+    projectId: "pubcrawlappl",
+    storageBucket: "pubcrawlappl.appspot.com",
+    messagingSenderId: "711134769554"
+  };
+firebase.initializeApp(config);
+</script> -->
+</body>
+</html>
