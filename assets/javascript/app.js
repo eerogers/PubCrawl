@@ -143,7 +143,9 @@ $(document).ready(function () {
                 var imABarAndAddMeToList = returnedBarArray[$(this).attr("dataIndex")].barName
                
                 //append to Suggested Bar List
-                $('ol').append("<li class='barsPicked' dataIndex = " + $(this).attr('dataIndex') + ">" + imABarAndAddMeToList + "</li>")
+    //------> this is the place where items are added to a list
+                $('#sugs').append("<li class='barsPicked' dataIndex = " + $(this).attr('dataIndex') + ">" + imABarAndAddMeToList + "</li>")
+        
                 var lat = returnedBarArray[$(this).attr("dataIndex")].barLat
                 var long = returnedBarArray[$(this).attr("dataIndex")].barLong
 
