@@ -293,29 +293,35 @@ div.container.current-weather {
     color: white;
 }
 
-#entry-chat {
+/* #entry-chat {
     width: 80%;
-}
+} */
 
 .card-footer {
     padding: 1px 1px 1px 1px;
 }
 
-#entry-chat, #itemField {
+/* #entry-chat, #itemField {
     float: left;
     width: 90%;
-}
+} */
 
-#enter, #add {
+/* #enter, #add {
     width: 10%;
-}
+} */
 
 .chat-box {
     width: 100%;
     overflow: auto;
 }
 
+div.jumbotron {
+    display: none;
+}
 
+div.card-body.chat {
+    overflow: auto;
+}
 
 
 
