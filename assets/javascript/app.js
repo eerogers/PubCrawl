@@ -45,7 +45,7 @@ function initMap() {
         var marker = new google.maps.Marker({
             position: latLng,
             map: map,
-            label: labels[labelIndex++ % labels.length]
+            label: labels[i]
         })
     }
 }
@@ -304,7 +304,7 @@ $(document).ready(function () {
 
                 //append to Suggested Bar List
                 $("#itinerary-title").text("Your Crawl:")
-                $('ol').append("<li class='barsPicked' dataIndex = " + $(this).attr('dataIndex') + ">" + imABarAndAddMeToList + "</li>")
+                $('ol').append("<li class='barsPicked' type='A' dataIndex = " + $(this).attr('dataIndex') + ">" + imABarAndAddMeToList + "</li>")
 
                //master
                 //append to Suggested Bar List
