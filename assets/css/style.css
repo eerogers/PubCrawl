@@ -261,7 +261,13 @@ p, .card-title {
     /* height: auto; */
 }
 
+
 img {
+    min-height: 0;
+    min-width: 0;
+}
+
+.search-images {
     min-height: 75px;
     min-width: 75px;
 }
@@ -323,8 +329,15 @@ div.card-body.chat {
     overflow: auto;
 }
 
+.itinerary2 {
+    display: none;
+}
 
 
+#entry-id, #entry-chat {
+    width: 80%;
+    float: left;
+}
 
 
 
